@@ -1,22 +1,25 @@
 # app/schemas.py
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 
 class TaskBase(BaseModel):
-    title: str
-    description: Optional[str] = None
+    # cambiamos string por ejemplos reales de guia al usuario
+    title: str = Field(..., example="Tu Nombre (Ej: María García / Tech Solutions)")
+    description: Optional[str] = Field(None, example="Me parece una API genial, ¡espero aprender mucho de Azure!")
 
 class TaskCreate(TaskBase):
     pass
 
 class TaskUpdate(BaseModel):
-    title: Optional[str] = None
-    description: Optional[str] = None
-    completed: Optional[bool] = None
+    # Esto es por si alguien quiere editar su mensaje
+    title: Optional[str] = Field(None, example="Nombre Actualizado")
+    description: Optional[str] = Field(None, example="Nueva reseña o comentario")
+    completed: Optional[bool] = Field(None, example=True)
 
 class TaskOut(TaskBase):
     id: int
     completed: bool
 
-    class Config:
-        orm_mode = True  # Permite trabajar con objetos ORM directamente
+    model_config = {
+        "from_attributes": True
+    }
