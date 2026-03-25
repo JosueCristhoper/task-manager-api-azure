@@ -1,6 +1,7 @@
 # app/schemas.py
 from pydantic import BaseModel, Field
 from typing import Optional
+from datetime import datetime
 
 class TaskBase(BaseModel):
     # cambiamos string por ejemplos reales de guia al usuario
@@ -19,6 +20,9 @@ class TaskUpdate(BaseModel):
 class TaskOut(TaskBase):
     id: int
     completed: bool
+
+    # Añadimos el atributo nuevo para la fecha
+    created_at: datetime
 
     model_config = {
         "from_attributes": True
