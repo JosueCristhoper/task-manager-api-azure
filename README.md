@@ -10,6 +10,11 @@ Esta es una API REST profesional desarrollada con FastAPI, diseñada para demost
 - Seguridad: Gestion de credenciales mediante variables de entorno (python-dotenv).
 - Despliegue Cloud: Alojado en Azure App Service con flujo de CI/CD via GitHub Actions.
 
+## Gestión de Datos y Metadatos (Novedad)
+- **Trazabilidad de Mensajes:** Implementación de marcas de tiempo automáticas (`created_at`) mediante migraciones de esquema en PostgreSQL.
+- **Estándar Internacional:** Uso del formato **ISO 8601** y zona horaria **UTC**, garantizando que los mensajes se registren con precisión independientemente de la ubicación del servidor.
+- **Auditoría de Interacciones:** Capacidad de ordenar y filtrar mensajes por fecha de creación, mejorando la analítica de la comunidad.
+
 ## Stack Tecnologico
 - Lenguaje: Python 3.13+
 - Framework: FastAPI
